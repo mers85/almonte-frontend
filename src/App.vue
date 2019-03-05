@@ -2,10 +2,8 @@
   <div id="app">
     <div id="nav">
       <router-link to="/">Home</router-link> /
-      <router-link to="/about">About</router-link> /
-      <router-link to="/register">Brotherhood Register</router-link> /
-      <router-link to="/login" v-if="isLogged === false" >Login</router-link> /
-      <logout  v-if="isLogged === true">Logout</logout>
+      <router-link to="/brotherhoods" >Admin</router-link> <span v-if="isLogged === true"> / </span>
+      <logout v-if="isLogged === true">Logout</logout>
     </div>
     <router-view/>
   </div>

@@ -38,7 +38,7 @@
 </template>
 
 <script>
-import { HTTP } from '../../http-common'
+import HTTP from '../../http-common'
 import { EventBus } from '../../_helpers/event-bus'
 
 export default {
@@ -46,14 +46,13 @@ export default {
     return {
       username: undefined,
       password: undefined,
-      errors: ""
+      errors: ''
     }
   },
   methods: {
     login () {
       window.localStorage.removeItem('user_credentials')
       if (this.username && this.password) {
-        var self = this
         HTTP({
           method: 'get',
           url: '/brotherhoods/',
@@ -62,19 +61,20 @@ export default {
             password: this.password
           }
         })
-        .then(response => {
-          var apiKey = response.data.api_key
-          var headers= 'Basic ' + this.username + ':' + this.password
-          window.localStorage.setItem('user_credentials', headers)
-          HTTP.defaults.headers.common['Authorization'] = headers
-          EventBus.$emit('logged', 'User logged')
-          this.$router.push({'name': 'admin'})
-          console.log('success')
-        })
-        .catch(error => {
-          console.log('error')
-          this.errors = "error"
-        })
+          .then(response => {
+            var encodedData = btoa(this.username + ':' + this.password)
+            console.log(encodedData)
+            var headers = 'Basic ' + encodedData
+            window.localStorage.setItem('user_credentials', headers)
+            HTTP.defaults.headers.common['Authorization'] = headers
+            EventBus.$emit('logged', 'User logged')
+            this.$router.push({ 'name': 'brotherhoods' })
+            console.log('success')
+          })
+          .catch(error => {
+            console.log('error')
+            this.errors = 'error'
+          })
       } else {
         console.log('Please enter a username and password.')
         this.errors = 'Please enter a username and password.'

@@ -1,25 +1,54 @@
-import { HTTP } from '../../http-common'
+import HTTP from '../../http-common'
 
 const BrotherhoodStore = {
   namespaced: true,
   state: {
     brotherhoods: [],
     brotherhood: {}
+
   },
   mutations: {
     one (state, data) {
-      state.brotherhood = data.brotherhood
+      state.brotherhood = data
       return state
     },
 
     many (state, data) {
-      state.brotherhoods = data.brotherhoods
+      state.brotherhoods = data
       return state
     }
   },
   actions: {
+    index (context, query) {
+      HTTP({
+        method: 'get',
+        url: '/brotherhoods/'
+      })
+        .then(function (response) {
+          console.log(response.data)
+          context.commit('many', response.data)
+        })
+        .catch(function (error) {
+          console.log(error)
+        })
+    },
+    show (context, id) {
+      HTTP({
+        method: 'get',
+        url: `brotherhoods/${id}`
+      })
+        .then(function (response) {
+          console.log('show response')
+          console.log(response.data)
+          context.commit('one', response.data)
+        })
+        .catch(function (error) {
+          console.log('error oh no')
+          console.log(error)
+        })
+    },
     create (context, form) {
-      HTTP( {
+      HTTP({
         method: 'post',
         url: '/brotherhood/',
         data: {
@@ -28,13 +57,31 @@ const BrotherhoodStore = {
           'foundation_date': form.foundation_date
         }
       })
-      .then(function (response) {
-        console.log(response)
+        .then(function (response) {
+          console.log(response)
+        })
+        .catch(function (error) {
+          context.commit('errors', error)
+          console.log(error)
+        })
+    },
+    update (context, brotherhood) {
+      HTTP({
+        method: 'put',
+        url: `brotherhoods/${brotherhood.id}/`,
+        data: {
+          'name': brotherhood.name,
+          'contact_email': brotherhood.contact_email,
+          'foundation_date': brotherhood.foundation_date
+        }
       })
-      .catch(function (error) {
-        context.commit('errors', error)
-        console.log(error)
-      })
+        .then(function (response) {
+          cosole.log('update sucess')
+          console.log('one', response.data)
+        })
+        .catch(function (error) {
+          console.log(error)
+        })
     }
   }
 }

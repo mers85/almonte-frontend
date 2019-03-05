@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import { HTTP } from '../../http-common'
+import HTTP from '../../http-common'
 import { EventBus } from '../../_helpers/event-bus'
 
 export default {

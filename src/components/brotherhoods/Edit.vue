@@ -2,10 +2,10 @@
   <div class="container">
     <div class="columns is-mobile">
       <div class="column is-half is-offset-one-quarter has-text-justified ">
-        <p class="title is-3 is-spaced">Registra tu Hermandad</p>
+        <p class="title is-3 is-spaced">Editando Hermandad: {{brotherhood.name}}</p>
       </div>
     </div>
-    <form v-on:submit.prevent="create" accept-charset="UTF-8" class="form">
+    <form v-on:submit.prevent="update" accept-charset="UTF-8" class="form">
       <div class="columns is-mobile">
         <div class="column is-half is-offset-one-quarter">
           <div class="field">
@@ -38,7 +38,7 @@
               <input type="submit" class="button is-primary" value="Enviar"/>
             </p>
             <p class="control">
-              <router-link :to="{ name: 'home' }" class="button has-text-grey"> Cancelar </router-link>
+              <router-link :to="{ name: 'brotherhoods' }" class="button has-text-grey"> Cancelar </router-link>
             </p>
           </div>
 
@@ -49,29 +49,26 @@
 </template>
 
 <script>
-import FormBrotherhood from './_Form.vue'
+import FormBrotherhood from './_Form.vue';
 
 export default {
-  data: function() {
-    return {
-      brotherhood: {
-        name: "",
-        contact_email: "",
-        foundation_date: ""
-      }
-    }
-  },
   components: {
     'form-brotherhood': FormBrotherhood
   },
+
+  data: function() {
+    return this.$store.state.BrotherhoodStore;
+  },
+
+  mounted: function() {
+    this.$store.dispatch('BrotherhoodStore/show', this.$route.params.id)
+  },
+
   methods: {
-    create: function () {
-      this.$store.dispatch('BrotherhoodStore/create', this.brotherhood).then(
-        response => {
-          console.log('llega')
-          setTimeout(() =>
-            this.$router.push({ name: 'thanks' })
-          , 1000)
+    update: function() {
+      this.$store.dispatch('BrotherhoodStore/update', this.brotherhood).then(
+        ()=> {
+          this.$router.push({ name: 'brotherhoods' })
         }
       )
     }

@@ -43,14 +43,8 @@
 <script>
 
 export default {
-  data: function () {
-    return {
-      brotherhood: {
-        name: '',
-        contact_email: '',
-        foundation_date: ''
-      }
-    }
-  }
+    data: function() {
+      return this.$store.state.BrotherhoodStore;
+    },
 }
 </script>
