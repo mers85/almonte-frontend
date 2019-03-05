@@ -21,4 +21,4 @@ at http://localhost:8080/brotherhoods. To see that view you must login in Admin
 **Register view**
 at http://localhost:8080/register.
 
-![RegisterView](https://raw.githubusercontent.com/mers85/almonte/master/brotherhoodRegister.png)
+![RegisterView](https://raw.githubusercontent.com/mers85/almonte-frontend/master/brotherhoodRegister.png)
