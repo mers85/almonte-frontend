@@ -3,7 +3,7 @@
      <div class="column is-10 is-offset-1">
        <div class="columns is-gap is-multiline is-mobile">
 
-         <div class="column is-4" v-for='brotherhood in brotherhoods'>
+         <div class="column is-4" v-for='(brotherhood, index) in brotherhoods' v-bind:key="index">
            <div class="card">
              <div class="card-content">
                <div class="media">

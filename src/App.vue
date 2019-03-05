@@ -13,7 +13,6 @@
 import Logout from './components/auth/Logout'
 import { EventBus } from './_helpers/event-bus'
 
-
 export default {
   data: function () {
     return {
@@ -37,7 +36,7 @@ export default {
     EventBus.$on('logged', () => {
       this.isLogged = this.checkIfIsLogged()
     })
-  },
+  }
 }
 </script>
 

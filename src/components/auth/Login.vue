@@ -71,9 +71,11 @@ export default {
             this.$router.push({ 'name': 'brotherhoods' })
             console.log('success')
           })
-          .catch(error => {
+          .catch(function (error) {
             console.log('error')
-            this.errors = 'error'
+            if (error) {
+              this.errors = 'Lo siento, algo no va bien, vuelve a intentarlo'
+            }
           })
       } else {
         console.log('Please enter a username and password.')

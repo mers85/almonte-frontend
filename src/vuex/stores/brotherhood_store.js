@@ -76,7 +76,7 @@ const BrotherhoodStore = {
         }
       })
         .then(function (response) {
-          cosole.log('update sucess')
+          console.log('update sucess')
           console.log('one', response.data)
         })
         .catch(function (error) {

@@ -49,25 +49,19 @@
 </template>
 
 <script>
-import FormBrotherhood from './_Form.vue';
 
 export default {
-  components: {
-    'form-brotherhood': FormBrotherhood
+  data: function () {
+    return this.$store.state.BrotherhoodStore
   },
-
-  data: function() {
-    return this.$store.state.BrotherhoodStore;
-  },
-
-  mounted: function() {
+  mounted: function () {
     this.$store.dispatch('BrotherhoodStore/show', this.$route.params.id)
   },
 
   methods: {
-    update: function() {
+    update: function () {
       this.$store.dispatch('BrotherhoodStore/update', this.brotherhood).then(
-        ()=> {
+        () => {
           this.$router.push({ name: 'brotherhoods' })
         }
       )

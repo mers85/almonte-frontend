@@ -1,34 +1,24 @@
-# almonte-frontend
+# Almonte-frontend
 
-## Project setup
-```
-npm install
-```
+This is a Vue.js frontend App for [Almonte API](https://github.com/mers85/almonte.git)
+The main views are registration, home and management of Brotherhoods.
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+## Local Setup / Installation
 
-### Compiles and minifies for production
-```
-npm run build
+```bash
+$ git clone  https://github.com/mers85/almonte-frontend.git
+$ cd almonte-frontend
+$ npm install
+$ npm run serve
 ```
 
-### Run your tests
-```
-npm run test
-```
 
-### Lints and fixes files
-```
-npm run lint
-```
+**List view**
+at http://localhost:8080/brotherhoods. To see that view you must login in Admin
 
-### Run your unit tests
-```
-npm run test:unit
-```
+![ListView](https://raw.githubusercontent.com/mers85/almonte-frontend/master/ListBrotherhood.png)
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+**Register view**
+at http://localhost:8080/register.
+
+![RegisterView](https://raw.githubusercontent.com/mers85/almonte/master/brotherhoodRegister.png)

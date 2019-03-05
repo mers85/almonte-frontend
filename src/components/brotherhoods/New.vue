@@ -49,20 +49,16 @@
 </template>
 
 <script>
-import FormBrotherhood from './_Form.vue'
 
 export default {
-  data: function() {
+  data: function () {
     return {
       brotherhood: {
-        name: "",
-        contact_email: "",
-        foundation_date: ""
+        name: '',
+        contact_email: '',
+        foundation_date: ''
       }
     }
-  },
-  components: {
-    'form-brotherhood': FormBrotherhood
   },
   methods: {
     create: function () {

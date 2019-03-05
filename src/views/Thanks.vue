@@ -9,6 +9,6 @@
 
 <style scoped>
 .pt100 {
-	padding-top: 100px!important
+  padding-top: 100px!important
 }
 </style>
